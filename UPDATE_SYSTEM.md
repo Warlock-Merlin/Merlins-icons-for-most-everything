@@ -57,3 +57,18 @@ For a Windows build, use the provided PowerShell script:
 ```
 
 If you want automated builds, the workflow file in `.github/workflows/build-windows.yml` runs on `windows-latest`, compiles `install_icons.exe`, and uploads it as a workflow artifact.
+
+## Shortcut creation helper
+
+A new helper script is available:
+
+```bash
+python create_shortcut.py
+```
+
+It will:
+- ask for a website name or URL
+- find the best matching installed `.ico`
+- create a `.url` shortcut on the desktop with that icon
+
+If no icon matches the website, it will print a message and do nothing.
