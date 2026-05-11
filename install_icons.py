@@ -24,15 +24,35 @@ def calculate_file_hash(file_path):
             md5_hash.update(chunk)
     return md5_hash.hexdigest()
 
+def build_local_manifest():
+    """Build a local manifest from existing files in the destination folder."""
+    manifest = {"version": "0.0", "files": {}}
+    if not os.path.isdir(DEST_FOLDER):
+        return manifest
+
+    for root, dirs, files in os.walk(DEST_FOLDER):
+        for file_name in files:
+            file_path = os.path.join(root, file_name)
+            if os.path.normcase(file_path) == os.path.normcase(LOCAL_MANIFEST):
+                continue
+
+            relative_path = os.path.relpath(file_path, DEST_FOLDER)
+            manifest["files"][relative_path] = {
+                "hash": calculate_file_hash(file_path),
+                "size": os.path.getsize(file_path),
+            }
+
+    return manifest
+
 def load_local_manifest():
-    """Load the local manifest if it exists."""
+    """Load the local manifest if it exists, otherwise build it from installed files."""
     if os.path.exists(LOCAL_MANIFEST):
         try:
             with open(LOCAL_MANIFEST, "r") as f:
                 return json.load(f)
         except Exception as e:
             print(f"Warning: Could not load local manifest: {e}")
-    return {"version": "0.0", "files": {}}
+    return build_local_manifest()
 
 def download_remote_manifest():
     """Download the manifest from GitHub."""
@@ -79,8 +99,14 @@ def download_and_extract_icons():
         # Get files that need updating
         files_to_update, remote_files = get_files_to_update(remote_manifest, local_manifest)
         
-        if not files_to_update and remote_version == local_version:
-            print("All icons are up to date!")
+        if not files_to_update:
+            if remote_version != local_version:
+                os.makedirs(DEST_FOLDER, exist_ok=True)
+                with open(LOCAL_MANIFEST, "w") as f:
+                    json.dump(remote_manifest, f, indent=2)
+                print("Icons already up to date; manifest metadata refreshed.")
+            else:
+                print("All icons are up to date!")
             return
         
         print(f"Found {len(files_to_update)} file(s) to update.")

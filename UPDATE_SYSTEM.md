@@ -48,3 +48,12 @@ pyinstaller --onefile --noconsole install_icons.py
 ```
 
 The `.exe` will be in the `dist/` folder.
+
+### Windows build support
+
+For a Windows build, use the provided PowerShell script:
+```powershell
+./build_windows.ps1
+```
+
+If you want automated builds, the workflow file in `.github/workflows/build-windows.yml` runs on `windows-latest`, compiles `install_icons.exe`, and uploads it as a workflow artifact.
