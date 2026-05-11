@@ -25,10 +25,10 @@ jobs:
 
       - name: Build executable
         run: |
-          pyinstaller --onefile --noconsole install_icons.py --distpath dist --workpath build --specpath build
+          pyinstaller --onefile --noconsole main.py --distpath dist --workpath build --specpath build
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: install_icons_windows_exe
-          path: dist/install_icons.exe
+          name: icon-manager-windows-exe
+          path: dist/main.exe

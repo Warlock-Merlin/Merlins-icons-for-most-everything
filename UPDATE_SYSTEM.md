@@ -5,11 +5,9 @@ This directory contains scripts for managing .ico file distribution and updates.
 ## Files
 
 - **`generate_manifest.py`** - Generates a `manifest.json` file that tracks all .ico files and their MD5 hashes. Run this whenever you add new .ico files to the `Icons/` folder.
-- **`install_icons.py`** - The main installer that:
-  - Downloads the latest manifest from GitHub
-  - Compares it with locally installed icons
-  - Only downloads and installs new or updated files
-  - Saves a local manifest to track what's installed
+- **`install_icons.py`** - The icon installer that downloads and manages icons.
+- **`create_shortcut.py`** - Creates desktop shortcuts with matching icons.
+- **`main.py`** - Unified launcher that combines both functions into a simple menu.
 
 ## Workflow for Updates
 
@@ -28,10 +26,10 @@ This directory contains scripts for managing .ico file distribution and updates.
    git push
    ```
 
-4. **Users run the installer** - Whether it's their first install or an update, the installer will:
-   - Check the remote manifest
-   - Only download/install files that are new or have changed
-   - Update their local manifest
+4. **Users run the tool** - The unified launcher (`main.exe`) provides a menu:
+   - Option 1: Install/Update Icons
+   - Option 2: Create a Shortcut
+   - Option 3: Exit
 
 ## How It Works
 
@@ -41,13 +39,13 @@ This directory contains scripts for managing .ico file distribution and updates.
 
 ## Packaging as .exe
 
-Once satisfied with the installer, create an executable:
+Build the unified launcher:
 ```bash
 pip install pyinstaller
-pyinstaller --onefile --noconsole install_icons.py
+pyinstaller --onefile --noconsole main.py
 ```
 
-The `.exe` will be in the `dist/` folder.
+The `.exe` will be in the `dist/` folder as `main.exe`.
 
 ### Windows build support
 
@@ -56,19 +54,12 @@ For a Windows build, use the provided PowerShell script:
 ./build_windows.ps1
 ```
 
-If you want automated builds, the workflow file in `.github/workflows/build-windows.yml` runs on `windows-latest`, compiles `install_icons.exe`, and uploads it as a workflow artifact.
+If you want automated builds, the workflow file in `.github/workflows/build-windows.yml` runs on `windows-latest`, compiles `main.exe`, and uploads it as a workflow artifact.
 
-## Shortcut creation helper
+## User workflow
 
-A new helper script is available:
-
-```bash
-python create_shortcut.py
-```
-
-It will:
-- ask for a website name or URL
-- find the best matching installed `.ico`
-- create a `.url` shortcut on the desktop with that icon
-
-If no icon matches the website, it will print a message and do nothing.
+1. User downloads `main.exe`
+2. User runs `main.exe`
+3. Menu appears with options to install icons or create shortcuts
+4. User selects what they want to do
+5. Tool handles the rest
