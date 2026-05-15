@@ -16,6 +16,11 @@ def calculate_file_hash(file_path):
             md5_hash.update(chunk)
     return md5_hash.hexdigest()
 
+def set_hidden_windows(path):
+    if os.name == "nt" and os.path.exists(path):
+        os.system(f'attrib +h "{path}"')
+
+
 def generate_manifest():
     """Generate manifest.json from the Icons folder."""
     manifest = {
@@ -46,8 +51,9 @@ def generate_manifest():
     # Save manifest to file
     with open(MANIFEST_FILE, "w") as f:
         json.dump(manifest, f, indent=2)
-    
-    print(f"Manifest generated: {MANIFEST_FILE}")
+
+    set_hidden_windows(MANIFEST_FILE)
+    print(f"Manifest generated: {MANIFEST_FILE} (hidden on Windows)")
     print(f"Total files: {len(manifest['files'])}")
 
 if __name__ == "__main__":

@@ -25,6 +25,7 @@ def show_menu():
 def main():
     """Main launcher menu."""
     while True:
+        clear_screen()
         show_menu()
         choice = input("\nEnter your choice (1-3): ").strip()
 
@@ -58,5 +59,9 @@ if __name__ == "__main__":
         sys.exit(0)
     except Exception as e:
         print(f"\nAn error occurred: {e}")
-        input("Press Enter to exit...")
+        try:
+            if sys.stdin is not None and sys.stdin.isatty():
+                input("Press Enter to exit...")
+        except Exception:
+            pass
         sys.exit(1)

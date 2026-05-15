@@ -54,6 +54,11 @@ def load_local_manifest():
             print(f"Warning: Could not load local manifest: {e}")
     return build_local_manifest()
 
+def set_hidden_windows(path):
+    if os.name == "nt" and os.path.exists(path):
+        os.system(f'attrib +h "{path}"')
+
+
 def download_remote_manifest():
     """Download the manifest from GitHub."""
     try:
@@ -104,6 +109,7 @@ def download_and_extract_icons():
                 os.makedirs(DEST_FOLDER, exist_ok=True)
                 with open(LOCAL_MANIFEST, "w") as f:
                     json.dump(remote_manifest, f, indent=2)
+                set_hidden_windows(LOCAL_MANIFEST)
                 print("Icons already up to date; manifest metadata refreshed.")
             else:
                 print("All icons are up to date!")
@@ -154,6 +160,7 @@ def download_and_extract_icons():
         local_manifest = remote_manifest
         with open(LOCAL_MANIFEST, "w") as f:
             json.dump(local_manifest, f, indent=2)
+        set_hidden_windows(LOCAL_MANIFEST)
         
         print(f"Successfully updated {len(files_to_update)} file(s) in '{DEST_FOLDER}'.")
     
