@@ -1,6 +1,9 @@
 import os
 import sys
 
+# Import version info
+from version import __version__, __app_name__
+
 # Import functions from both modules
 from install_icons import download_and_extract_icons
 from create_shortcut import main as create_shortcut_main
@@ -14,7 +17,7 @@ def clear_screen():
 def show_menu():
     """Display the main menu."""
     print("\n" + "=" * 50)
-    print("           Merlin's Icon Manager")
+    print(f"           {__app_name__} v{__version__}")
     print("=" * 50)
     print("\n1. Install/Update Icons")
     print("2. Create a Shortcut")
