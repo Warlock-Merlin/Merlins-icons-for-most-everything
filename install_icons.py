@@ -16,6 +16,11 @@ DEST_FOLDER = "C:\\.ico"
 # Local manifest file to track installed versions
 LOCAL_MANIFEST = os.path.join(DEST_FOLDER, "manifest.json")
 
+SCRIPT_DIR = os.path.dirname(__file__)
+FOLDER_ICON_NAME = "Github_Icon.ico"
+FOLDER_ICON_SOURCE = os.path.join(SCRIPT_DIR, "python", FOLDER_ICON_NAME)
+FOLDER_DESKTOP_INI = os.path.join(DEST_FOLDER, "desktop.ini")
+
 def calculate_file_hash(file_path):
     """Calculate MD5 hash of a file."""
     md5_hash = hashlib.md5()
@@ -84,6 +89,29 @@ def get_files_to_update(remote_manifest, local_manifest):
     
     return files_to_update, remote_files
 
+def ensure_folder_icon():
+    """Apply a custom folder icon to the destination folder on Windows."""
+    if not os.path.exists(FOLDER_ICON_SOURCE):
+        return
+
+    os.makedirs(DEST_FOLDER, exist_ok=True)
+    target_icon = os.path.join(DEST_FOLDER, FOLDER_ICON_NAME)
+    shutil.copy2(FOLDER_ICON_SOURCE, target_icon)
+
+    desktop_ini_contents = [
+        "[.ShellClassInfo]",
+        f"IconResource={FOLDER_ICON_NAME},0",
+        f"IconFile={FOLDER_ICON_NAME}",
+        "IconIndex=0",
+    ]
+    with open(FOLDER_DESKTOP_INI, "w", encoding="utf-8") as f:
+        f.write("\r\n".join(desktop_ini_contents) + "\r\n")
+
+    if os.name == "nt":
+        os.system(f'attrib +h +s "{FOLDER_DESKTOP_INI}"')
+        os.system(f'attrib +s "{DEST_FOLDER}"')
+
+
 def download_and_extract_icons():
     try:
         print("Checking for updates...")
@@ -110,6 +138,7 @@ def download_and_extract_icons():
                 with open(LOCAL_MANIFEST, "w") as f:
                     json.dump(remote_manifest, f, indent=2)
                 set_hidden_windows(LOCAL_MANIFEST)
+                ensure_folder_icon()
                 print("Icons already up to date; manifest metadata refreshed.")
             else:
                 print("All icons are up to date!")
@@ -161,6 +190,7 @@ def download_and_extract_icons():
         with open(LOCAL_MANIFEST, "w") as f:
             json.dump(local_manifest, f, indent=2)
         set_hidden_windows(LOCAL_MANIFEST)
+        ensure_folder_icon()
         
         print(f"Successfully updated {len(files_to_update)} file(s) in '{DEST_FOLDER}'.")
     
