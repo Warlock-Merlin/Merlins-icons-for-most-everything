@@ -1,53 +1,65 @@
 {
   "version": "1.0",
   "files": {
-    "Wiki.ico": {
-      "hash": "a82e03a9f2e67c975a3b7fa557abfae9",
-      "size": 52892
+    "ASUS.ico": {
+      "hash": "17036f866ffdebacc77670cad0161db6",
+      "size": 444359
+    },
+    "Band Us.ico": {
+      "hash": "4ca6066391b0105f3fb0b3587e47ba09",
+      "size": 79773
     },
     "Facebook.ico": {
       "hash": "884ec2622cb7d4f9356a3c0c1c22d367",
       "size": 67848
     },
-    "MECT.ico": {
-      "hash": "9a4c6a6ffd81b74952c853b7effb1510",
-      "size": 96437
+    "Github.ico": {
+      "hash": "268e357a065ec391c0991b1016d55e66",
+      "size": 87475
     },
-    "spectrum.ico": {
-      "hash": "6e5a825c34289cff83194a1295fecf9c",
-      "size": 45841
-    },
-    "White Netflix.ico": {
-      "hash": "898993cf9d8623a28440c10c60a230ed",
-      "size": 59411
-    },
-    "T-Mobile.ico": {
-      "hash": "44f09b375f44e25979642d28f151be81",
-      "size": 429008
-    },
-    "ASUS.ico": {
-      "hash": "17036f866ffdebacc77670cad0161db6",
-      "size": 444359
-    },
-    "White Apple Icloud.ico": {
-      "hash": "598e9e658efca621fff74692cca78d27",
-      "size": 73927
+    "Google News.ico": {
+      "hash": "484c4f0f53111d124dc45b57af6a3d75",
+      "size": 67667
     },
     "Google.ico": {
       "hash": "010e6cc94c9a033af9739756598f1f96",
       "size": 124489
     },
+    "MECT.ico": {
+      "hash": "9a4c6a6ffd81b74952c853b7effb1510",
+      "size": 96437
+    },
+    "Patreon.ico": {
+      "hash": "53e4c195f94bc1e3b635d7c52e994764",
+      "size": 32356
+    },
+    "Spectrum.ico": {
+      "hash": "6e5a825c34289cff83194a1295fecf9c",
+      "size": 45841
+    },
+    "T-Mobile.ico": {
+      "hash": "44f09b375f44e25979642d28f151be81",
+      "size": 429008
+    },
+    "Telegram.ico": {
+      "hash": "88e145ab5ed2d4e2e6d49d5f9ea74711",
+      "size": 86677
+    },
+    "Tiktok.ico": {
+      "hash": "098f1713ee7333816f6b7fc59cdddbd8",
+      "size": 69749
+    },
+    "Verizon.ico": {
+      "hash": "bb644434db7bc355e5cbeaed067fd03b",
+      "size": 66594
+    },
     "White Amazon.ico": {
       "hash": "faa657060131ac983826f20e7bf8b1fb",
       "size": 66421
     },
-    "google news.ico": {
-      "hash": "484c4f0f53111d124dc45b57af6a3d75",
-      "size": 67667
-    },
-    "White Reddit 2.ico": {
-      "hash": "d74c9250d6938b0c371b32dab5895495",
-      "size": 73374
+    "White Apple Icloud.ico": {
+      "hash": "598e9e658efca621fff74692cca78d27",
+      "size": 73927
     },
     "White Dropbox.ico": {
       "hash": "85c820f04f2ff3e13491b64a84efe6b5",
@@ -57,49 +69,85 @@
       "hash": "dc3097bbe9c4c5828d6fdb7665b038a8",
       "size": 125012
     },
-    "github.ico": {
-      "hash": "268e357a065ec391c0991b1016d55e66",
-      "size": 87475
+    "White Netflix.ico": {
+      "hash": "898993cf9d8623a28440c10c60a230ed",
+      "size": 59411
     },
-    "Band Us.ico": {
-      "hash": "4ca6066391b0105f3fb0b3587e47ba09",
-      "size": 79773
+    "White Patreon.ico": {
+      "hash": "0c34671bcb6dd0fcd50d29414525213f",
+      "size": 50132
+    },
+    "White Reddit 2.ico": {
+      "hash": "d74c9250d6938b0c371b32dab5895495",
+      "size": 73374
+    },
+    "White Reddit.ico": {
+      "hash": "e8f0ee28c9dcc1d8ef0de271cfe118be",
+      "size": 83293
+    },
+    "Wiki.ico": {
+      "hash": "a82e03a9f2e67c975a3b7fa557abfae9",
+      "size": 52892
     },
     "Youtube.ico": {
       "hash": "fcbb0cb479023d68fbe1573047e97b30",
       "size": 15103
     },
-    "Telegram.ico": {
-      "hash": "88e145ab5ed2d4e2e6d49d5f9ea74711",
-      "size": 86677
+    "Banks\\Chase 1.ico": {
+      "hash": "af3f1a7fc57ccf771a0eb0de55fbfe7a",
+      "size": 40933
     },
-    "Mail/Yahoo.ico": {
-      "hash": "e14309d602e54e1a9dc352a6bcf25974",
-      "size": 185167
+    "Banks\\Chase 2.ico": {
+      "hash": "f13c94b66bf09af76b89b753b59b9b80",
+      "size": 53979
     },
-    "Mail/yahoo mail macos.ico": {
-      "hash": "818bb11331a3366d1279240091ae6e57",
-      "size": 67646
+    "Banks\\Regions.ico": {
+      "hash": "c70219b826b26e4da9830e4bcd28426e",
+      "size": 94567
     },
-    "Mail/aol email.ico": {
+    "Banks\\Wells Fargo 1.ico": {
+      "hash": "13616c884d2b77108d5bf77c774a77ef",
+      "size": 78627
+    },
+    "Basic Designs\\Black Cog.ico": {
+      "hash": "5d7bfa195c69f4112101409287e33e94",
+      "size": 63470
+    },
+    "Basic Designs\\Black Gradi Cog.ico": {
+      "hash": "3a9ae6900a680afee498a336d3350fed",
+      "size": 103005
+    },
+    "Basic Designs\\Blue Cog.ico": {
+      "hash": "6589c127de0f8bcf418c2f4fe8e94867",
+      "size": 70198
+    },
+    "Mail\\aol email.ico": {
       "hash": "271d5adfc4c4c18e81792228d17e527d",
       "size": 67646
     },
-    "Mail/Microsoft Outlook.ico": {
-      "hash": "f9d3c9704991e7c8a440cf1c27ebbe1f",
-      "size": 341489
+    "Mail\\Gmail icon.ico": {
+      "hash": "1d3f497519880d1761afb2963adc9587",
+      "size": 23494
     },
-    "Mail/Mail macos.ico": {
+    "Mail\\Mail macos.ico": {
       "hash": "6bde1168e659b3a9facb78b9c3c6c8aa",
       "size": 67646
     },
-    "Mail/Specturm mail email.ico": {
+    "Mail\\Microsoft Outlook.ico": {
+      "hash": "f9d3c9704991e7c8a440cf1c27ebbe1f",
+      "size": 341489
+    },
+    "Mail\\Specturm mail email.ico": {
       "hash": "6075a889e82f4344d75891599bcf3b4b",
       "size": 67646
     },
-    "Mail/Gmail icon.ico": {
-      "hash": "1d3f497519880d1761afb2963adc9587",
-      "size": 23494
+    "Mail\\yahoo mail macos.ico": {
+      "hash": "818bb11331a3366d1279240091ae6e57",
+      "size": 67646
+    },
+    "Mail\\Yahoo.ico": {
+      "hash": "e14309d602e54e1a9dc352a6bcf25974",
+      "size": 185167
     }
   }
 }
