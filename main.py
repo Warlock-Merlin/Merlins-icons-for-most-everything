@@ -5,6 +5,7 @@ import sys
 from version import __version__, __app_name__
 
 # Import functions from both modules
+from generate_manifest import generate_manifest
 from install_icons import download_and_extract_icons
 from create_shortcut import main as create_shortcut_main
 
@@ -21,7 +22,8 @@ def show_menu():
     print("=" * 50)
     print("\n1. Install/Update Icons")
     print("2. Create a Shortcut")
-    print("3. Exit")
+    print("3. Refresh icon manifest")
+    print("4. Exit")
     print("\n" + "-" * 50)
 
 
@@ -30,7 +32,7 @@ def main():
     while True:
         clear_screen()
         show_menu()
-        choice = input("\nEnter your choice (1-3): ").strip()
+        choice = input("\nEnter your choice (1-4): ").strip()
 
         if choice == "1":
             print("\n" + "-" * 50)
@@ -47,11 +49,18 @@ def main():
             input("\nPress Enter to return to menu...")
 
         elif choice == "3":
+            print("\n" + "-" * 50)
+            print("Refresh icon manifest")
+            print("-" * 50)
+            generate_manifest()
+            input("\nPress Enter to return to menu...")
+
+        elif choice == "4":
             print("\nExiting... Goodbye!")
             sys.exit(0)
 
         else:
-            print("\nInvalid choice. Please enter 1, 2, or 3.")
+            print("\nInvalid choice. Please enter 1, 2, 3, or 4.")
 
 
 if __name__ == "__main__":
