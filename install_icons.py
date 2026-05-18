@@ -19,6 +19,7 @@ LOCAL_MANIFEST = os.path.join(DEST_FOLDER, "manifest.json")
 SCRIPT_DIR = os.path.dirname(__file__)
 FOLDER_ICON_NAME = "Github_Icon.ico"
 FOLDER_ICON_SOURCE = os.path.join(SCRIPT_DIR, "python", FOLDER_ICON_NAME)
+FOLDER_DESKTOP_INI_SOURCE = os.path.join(SCRIPT_DIR, "python", "desktop.ini")
 FOLDER_DESKTOP_INI = os.path.join(DEST_FOLDER, "desktop.ini")
 
 def calculate_file_hash(file_path):
@@ -98,14 +99,17 @@ def ensure_folder_icon():
     target_icon = os.path.join(DEST_FOLDER, FOLDER_ICON_NAME)
     shutil.copy2(FOLDER_ICON_SOURCE, target_icon)
 
-    desktop_ini_contents = [
-        "[.ShellClassInfo]",
-        f"IconResource={FOLDER_ICON_NAME},0",
-        f"IconFile={FOLDER_ICON_NAME}",
-        "IconIndex=0",
-    ]
-    with open(FOLDER_DESKTOP_INI, "w", encoding="utf-8") as f:
-        f.write("\r\n".join(desktop_ini_contents) + "\r\n")
+    if os.path.exists(FOLDER_DESKTOP_INI_SOURCE):
+        shutil.copy2(FOLDER_DESKTOP_INI_SOURCE, FOLDER_DESKTOP_INI)
+    elif not os.path.exists(FOLDER_DESKTOP_INI):
+        desktop_ini_contents = [
+            "[.ShellClassInfo]",
+            f"IconResource={FOLDER_ICON_NAME},0",
+            f"IconFile={FOLDER_ICON_NAME}",
+            "IconIndex=0",
+        ]
+        with open(FOLDER_DESKTOP_INI, "w", encoding="utf-8") as f:
+            f.write("\r\n".join(desktop_ini_contents) + "\r\n")
 
     if os.name == "nt":
         os.system(f'attrib +h +s "{FOLDER_DESKTOP_INI}"')
