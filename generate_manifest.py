@@ -2,11 +2,16 @@ import json
 import os
 import hashlib
 
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+
 # Path to the Icons folder
-ICONS_FOLDER = "Icons"
+ICONS_FOLDER = os.path.join(SCRIPT_DIR, "Icons")
 
 # Output manifest file
-MANIFEST_FILE = "manifest.json"
+MANIFEST_FILE = os.path.join(SCRIPT_DIR, "manifest.json")
+
+# Temporary manifest file used during safe writes
+TEMP_MANIFEST_FILE = MANIFEST_FILE + ".tmp"
 
 def calculate_file_hash(file_path):
     """Calculate MD5 hash of a file."""
@@ -48,9 +53,17 @@ def generate_manifest():
                 "size": file_size
             }
     
-    # Save manifest to file
-    with open(MANIFEST_FILE, "w") as f:
+    # Save manifest to a temporary file first, then replace the existing file.
+    with open(TEMP_MANIFEST_FILE, "w", encoding="utf-8") as f:
         json.dump(manifest, f, indent=2)
+
+    try:
+        os.replace(TEMP_MANIFEST_FILE, MANIFEST_FILE)
+    except PermissionError as e:
+        print(f"Error: Could not replace manifest file: {e}")
+        if os.path.exists(TEMP_MANIFEST_FILE):
+            os.remove(TEMP_MANIFEST_FILE)
+        return
 
     set_hidden_windows(MANIFEST_FILE)
     print(f"Manifest generated: {MANIFEST_FILE} (hidden on Windows)")

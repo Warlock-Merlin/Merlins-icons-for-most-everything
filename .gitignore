@@ -48,3 +48,4 @@ env/
 *.so
 
 # Generated files
+temp_test_write.txt
