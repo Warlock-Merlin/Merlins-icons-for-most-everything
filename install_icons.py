@@ -101,6 +101,7 @@ def ensure_folder_icon():
 
     if os.path.exists(FOLDER_DESKTOP_INI_SOURCE):
         shutil.copy2(FOLDER_DESKTOP_INI_SOURCE, FOLDER_DESKTOP_INI)
+        print(f"Copied custom desktop.ini to {FOLDER_DESKTOP_INI}")
     elif not os.path.exists(FOLDER_DESKTOP_INI):
         desktop_ini_contents = [
             "[.ShellClassInfo]",
@@ -110,6 +111,7 @@ def ensure_folder_icon():
         ]
         with open(FOLDER_DESKTOP_INI, "w", encoding="utf-8") as f:
             f.write("\r\n".join(desktop_ini_contents) + "\r\n")
+        print(f"Created default desktop.ini at {FOLDER_DESKTOP_INI}")
 
     if os.name == "nt":
         os.system(f'attrib +h +s "{FOLDER_DESKTOP_INI}"')
